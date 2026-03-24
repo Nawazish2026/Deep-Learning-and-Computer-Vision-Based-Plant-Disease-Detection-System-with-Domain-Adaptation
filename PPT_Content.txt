@@ -1,7 +1,25 @@
 ===============================================================================
-  AI POWERED PLANT DISEASE DETECTION SYSTEM
+ Deep Learning and Computer Vision-Based Plant Disease Detection System with Domain Adaptation
   B.Tech Major Project — PPT Presentation Content
   Generated from actual codebase analysis | March 2026
+  🔤 "Deep Learning"
+Your system uses AgriNet, a multi-layer Convolutional Neural Network with Inverted Residual Blocks, Batch Normalization, and Dropout — all hallmarks of Deep Learning. You did not use shallow classifiers like SVM or Decision Trees. The model has a depth of: Stem → 4 AgriBlocks → GAP → Classifier, with Adam optimizer and ReduceLROnPlateau scheduler.
+
+👁️ "Computer Vision"
+The system operates entirely on image data (leaf photographs). Key CV operations performed: resizing, normalization, color augmentation, spatial feature extraction via convolutions. The planned Grad-CAM heatmap is a classic computer vision explainability tool.
+
+🌿 "Plant Disease Detection System"
+This anchors the application domain clearly. You classify 38 distinct categories of diseases across 14 plant species. The word "System" (not just "Model") signals that this is a full pipeline — data ingestion, training, evaluation, and deployment.
+
+🌍 "with Domain Adaptation"
+This is the academic differentiator. Standard projects train on clean PlantVillage lab images and stop there. You went further by:
+
+Identifying the "domain gap" problem (clean lab vs. messy field).
+Writing a custom 
+
+MappedPlantDocDataset
+ class to merge PlantDoc into the 38-class label structure.
+Fine-tuning the pre-trained model on 56,000+ mixed-domain images achieving 96.1% accuracy in real-world scenarios.
 ===============================================================================
 
 GROUP MEMBERS:
