@@ -1,5 +1,6 @@
 \documentclass[12pt, a4paper]{report}
-\usepackage{times}
+\usepackage{newtxtext}
+\usepackage{newtxmath}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{geometry}
@@ -9,7 +10,7 @@
 \usepackage{titlesec}
 \usepackage{hyperref}
 \usepackage{booktabs}
-\usepackage{caption}
+\usepackage{caption} 
 
 % ==========================================
 % VARIABLE DECLARATIONS (Edit these to update the entire document)
@@ -52,35 +53,63 @@
 % Title Page
 \begin{titlepage}
 \begin{center}
-{\fontsize{12}{14}\selectfont\bfseries\itshape Major Project Report}\\
-\vspace{0.5cm}
-on\\
-\vspace{0.5cm}
-\textbf{\fontsize{16}{19}\selectfont \projectTitleUpper}\\
-\vspace{1.5cm}
-Submitted in partial fulfillment of the requirements for the award of the degree of\\
-\vspace{0.5cm}
-\textbf{\degreeName}\\
-in\\
-\textbf{\departmentUpper}\\
-\vspace{1.5cm}
-by\\
-\vspace{0.5cm}
+
+{\fontsize{12}{14}\selectfont\bfseries\itshape MAJOR PROJECT REPORT}
+
+\vspace{0.3cm}
+on
+
+\vspace{0.3cm}
+
+{\fontsize{14}{16}\selectfont\bfseries \projectTitleUpper}
+
+\vspace{0.8cm}
+
+Submitted in partial fulfillment of the requirements for the award of the degree of
+
+\vspace{0.3cm}
+
+{\bfseries \degreeName}
+
+in
+
+{\bfseries \departmentUpper}
+
+\vspace{0.8cm}
+
+by
+
+\vspace{0.3cm}
+
 \MakeUppercase{\studentOneName} (\studentOneRoll)\\
 \MakeUppercase{\studentTwoName} (\studentTwoRoll)\\
 \MakeUppercase{\studentThreeName} (\studentThreeRoll)\\
-\MakeUppercase{\studentFourName} (\studentFourRoll)\\
-\vspace{1.5cm}
-Under the Supervision of\\
-\vspace{0.5cm}
-\textbf{\MakeUppercase{\supervisorName}}\\
-\supervisorDesignation\\
-\vspace{2cm}
-\textbf{\departmentUpper}\\
-\textbf{\instituteUpper}\\
-(An Institute of National Importance under Ministry of Education, Govt. of India)\\
-\vspace{0.5cm}
+\MakeUppercase{\studentFourName} (\studentFourRoll)
+
+\vspace{0.8cm}
+
+Under the Supervision of
+
+\vspace{0.3cm}
+
+{\bfseries\MakeUppercase{\supervisorName}}\\
+\supervisorDesignation
+
+\vspace{0.8cm}
+
+\includegraphics[width=2.5cm]{media/logo.png}
+
+\vspace{0.3cm}
+
+{\bfseries\departmentUpper}\\
+{\bfseries\instituteUpper}
+
+(An Institute of National Importance under Ministry of Education, Govt. of India)
+
+\vspace{0.3cm}
+
 \submissionMonthYearUpper
+
 \end{center}
 \end{titlepage}
 
@@ -303,7 +332,7 @@ The second phase loaded the saved weights from the first phase and switched the 
 A Retrieval-Augmented Generation pipeline was built to supply verified agricultural treatments.
 
 \subsection{Document Ingestion and Chunking Strategy}
-The system loads official farming manuals and extracts the text. LangChain's RecursiveCharacterTextSplitter processes this text using a chunk size of 1,000 characters and a 200-character overlap. This overlap ensures context isn't lost between chunks.
+The system loads official farming manuals covering various crops (e.g., Tomato \cite{nhb_tomato}, Potato \cite{nhb_potato}, Maize \cite{seedco_maize}, Apple \cite{vikaspedia_apple}) alongside general Integrated Disease Management guidelines \cite{idm_concept}, and extracts their text. LangChain's RecursiveCharacterTextSplitter processes this text using a chunk size of 1,000 characters and a 200-character overlap. This overlap ensures context isn't lost between chunks.
 
 \subsection{Vector Database and Retrieval Mechanics}
 An embedding model converts these text chunks into dense 384-dimensional vector representations. These vectors are then stored inside a local FAISS index. When a farmer submits a question, the system embeds the query and searches the FAISS index to find the three most similar chunks using cosine similarity.
@@ -400,11 +429,9 @@ The second phase introduced the noisy PlantDoc images. Adding real-world backgro
 \section{Performance Evaluation Metrics}
 Standard mathematical formulas were used to evaluate classification performance. Precision calculates the ratio of true positive predictions against all predicted positives. Recall calculates the ratio of true positive predictions against the actual positives in the dataset. The F1-Score takes the harmonic mean of both precision and recall. Testing the model on the combined validation set resulted in a weighted average of 0.99 for Precision, Recall, and the F1-Score. 
 
-% Placeholder for Confusion Matrix Image
 \begin{figure}[h!]
     \centering
-    % \includegraphics[width=0.8\textwidth]{confusion_matrix.png}
-    \vspace{5cm} % Remove this line when you uncomment the includegraphics above
+    \includegraphics[width=0.8\textwidth]{media/confusion_matrix.png}
     \caption{Confusion Matrix for 38-Class Mixed-Domain Predictions}
     \label{fig:confusion_matrix}
 \end{figure}
@@ -416,11 +443,9 @@ L^c_{\text{Grad-CAM}} = \text{ReLU}\left(\sum_k \alpha_k^c A^k\right)
 \end{equation}
 When this resulting heatmap is laid over the original image, it shows the model actively focusing on leaf lesions rather than background soil or shadows.
 
-% Placeholder for Grad-CAM Heatmap Image
 \begin{figure}[h!]
     \centering
-    % \includegraphics[width=0.8\textwidth]{gradcam_heatmap.png}
-    \vspace{5cm} % Remove this line when you uncomment the includegraphics above
+    \includegraphics[width=0.8\textwidth]{media/gradcam_heatmap.png}
     \caption{Grad-CAM Heatmap Overlaid on Diseased Leaf}
     \label{fig:gradcam}
 \end{figure}
@@ -488,6 +513,21 @@ L. Liu and H. Miao, ``A specification based approach to testing polymorphic attr
 
 \bibitem{weert2003}
 T. J. van Weert and R. K. Munro, Eds., \textit{Informatics and the Digital Society: Social, Ethical and Cognitive Issues}. Boston: Kluwer Academic, 2003.
+
+\bibitem{nhb_tomato}
+National Horticulture Board, ``Tomato,'' [Online]. Available: \url{https://nhb.gov.in/pdf/vegetable/tomato/tom002.pdf}.
+
+\bibitem{nhb_potato}
+National Horticulture Board, ``Potato,'' [Online]. Available: \url{https://nhb.gov.in/pdf/vegetable/potato/pot002.pdf}.
+
+\bibitem{seedco_maize}
+Seed Co Group, ``Maize Disease Brochure,'' [Online]. Available: \url{https://www.seedcogroup.com/zw/fieldcrops/wp-content/uploads/2021/09/Maize-disease-brochure.pdf}.
+
+\bibitem{vikaspedia_apple}
+Vikaspedia, ``IPM Strategies for Apple - Apple diseases and symptoms,'' [Online]. Available: \url{https://agriculture.vikaspedia.in/viewcontent/agriculture/crop-production/integrated-pest-managment/ipm-for-fruit-crops/ipm-strategies-for-apple/apple-diseases-and-symptoms?lgn=en}.
+
+\bibitem{idm_concept}
+``Integrated Plant Disease Management (IDM) – Concept, Advantages and Importance,'' [Online]. Available: \url{http://eagri.org/eagri50/PATH171/lec31.pdf}.
 
 \end{thebibliography}
 
