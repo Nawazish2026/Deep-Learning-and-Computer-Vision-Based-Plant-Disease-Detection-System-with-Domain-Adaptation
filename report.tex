@@ -45,6 +45,7 @@
 
 % Format according to docs
 \titleformat{\chapter}[display]{\normalfont\fontsize{16}{19}\bfseries\centering}{\chaptertitlename\ \thechapter}{0pt}{}
+\titlespacing*{\chapter}{0pt}{-30pt}{20pt}
 \titleformat{\section}{\normalfont\fontsize{14}{17}\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\normalfont\fontsize{12}{15}\bfseries}{\thesubsection}{1em}{}
 
@@ -54,7 +55,7 @@
 \begin{titlepage}
 \begin{center}
 
-{\fontsize{12}{14}\selectfont\bfseries\itshape MAJOR PROJECT REPORT}
+{\fontsize{12}{14}\selectfont\bfseries\ MAJOR PROJECT REPORT}
 
 \vspace{0.3cm}
 on
@@ -115,37 +116,58 @@ Under the Supervision of
 
 \pagenumbering{roman}
 
-\chapter*{DECLARATION}
+\begin{center}
+\includegraphics[width=\textwidth]{media/iiitbh-header.png}
+
+\vspace{1cm}
+
+{\Large\bfseries DECLARATION}
+\end{center}
+\vspace{0.5cm}
 \addcontentsline{toc}{chapter}{DECLARATION}
-The work presented in this B.Tech Major Project, titled ``\projectTitleMixed,'' is original. It was conducted independently by the students in the \departmentMixed{} at the \instituteMixed, under the guidance of \supervisorName.
+
+The work presented in this B.Tech Major Project, titled ``\projectTitleMixed'' is original. It was conducted independently by the students in the \departmentMixed{} at \instituteMixed, under the guidance of \supervisorName.
 
 No part of this work has been submitted to acquire any other Degree, Diploma, Fellowship, or similar titles at any other university or institution.
 
 \vspace{1cm}
-\noindent Date: \submissionMonthYearMixed \hfill \studentOneName{} (\studentOneRoll)\\
-Place: \instituteShort \hfill \studentTwoName{} (\studentTwoRoll)\\
-\null \hfill \studentThreeName{} (\studentThreeRoll)\\
-\null \hfill \studentFourName{} (\studentFourRoll)
+
+\noindent
+   Date: \submissionMonthYearMixed
+\hfill
+\studentOneName{} (\studentOneRoll)
+
+Place: \instituteShort \hfill  \studentTwoName{}   (\studentTwoRoll)
+
+\hfill \studentThreeName{} (\studentThreeRoll)
+
+\hfill \studentFourName{} (\studentFourRoll)
+
+\newpage
 
 \chapter*{CERTIFICATE}
 \addcontentsline{toc}{chapter}{CERTIFICATE}
+
 This is to certify that the project entitled ``\projectTitleMixed'' is carried out by:
 
 \begin{itemize}
-    \item[] \studentOneName{} (\studentOneRoll)
-    \item[] \studentTwoName{} (\studentTwoRoll)
-    \item[] \studentThreeName{} (\studentThreeRoll)
-    \item[] \studentFourName{} (\studentFourRoll)
+\item \studentOneName{} (\studentOneRoll)
+\item \studentTwoName{} (\studentTwoRoll)
+\item \studentThreeName{} (\studentThreeRoll)
+\item \studentFourName{} (\studentFourRoll)
 \end{itemize}
 
-who are B. Tech. students of Computer Science and Engineering at \instituteShort, under my supervision and guidance. This project has been submitted in partial fulfillment of the requirements for the award of the ``\degreeNameMixed'' degree in Computer Science and Engineering at the \instituteMixed.
+who are B.Tech students of Computer Science and Engineering at \instituteShort, under my supervision and guidance. This project has been submitted in partial fulfillment of the requirements for the award of the ``\degreeNameMixed'' degree.
 
 To the best of my knowledge, no part of this project report has been submitted for the award of any other degree or diploma.
 
 \vspace{2cm}
-\noindent \begin{tabular}{@{}p{8cm}p{7cm}@{}}
-\textbf{\supervisorName} & \textbf{\hodName} \\
-\supervisorDesignation, Dept. of CSE & \hodDesignation \\
+
+\noindent
+\begin{tabular}{p{7cm}p{7cm}}
+\textbf{\supervisorName} & \textbf{\hodName}\\
+\supervisorDesignation, Dept. of CSE &
+\hodDesignation\\
 (Supervisor) & (Head of Department)
 \end{tabular}
 
@@ -166,8 +188,9 @@ Appreciation is extended to all the faculty members of the \departmentMixed, \in
 \null \hfill \studentFourName{} (\studentFourRoll)
 
 \chapter*{ABSTRACT}
+
 \addcontentsline{toc}{chapter}{ABSTRACT}
-Global food security relies heavily on agricultural productivity, but plant diseases constantly reduce crop yields. Annual crop losses in India alone hit between 15\% and 20\% due to pathologies that go undetected or get diagnosed too late. Agronomists usually rely on physical inspections for diagnosis. This manual process is slow, prone to mistakes, and hard to access for farmers in remote areas. The ``AgriVision 2.0'' project offers a solution by combining a specialized Convolutional Neural Network (CNN) called ``AgriNet'' with a Retrieval-Augmented Generation (RAG) chat engine.
+Global food security relies heavily on agricultural productivity, but plant diseases constantly reduce crop yields. Annual crop losses in India alone hit between 15\% and 20\% due to pathologies that go undetected or get diagnosed too late. Agronomists usually rely on physical inspections for diagnosis. This manual process is slow, prone to mistakes, and hard to access for farmers in remote areas. The proposed project offers a solution by combining a specialized Convolutional Neural Network (CNN) called ``AgriNet'' with a Retrieval-Augmented Generation (RAG) chat engine.
 
 Most agricultural computer vision models are trained using controlled laboratory images. This creates a large domain gap, causing them to fail frequently when tested in messy, real-world farm environments with varied lighting and backgrounds. The current work solves this problem through Mixed-Domain Dataset Fusion. Initially, the base model was trained on 54,305 lab images from the PlantVillage dataset, reaching a validation accuracy of 98.75\%. To fix the domain gap, the system integrates 2,231 field images from the PlantDoc dataset. Mapping 27 real-world categories into the standard 38-class structure and fine-tuning the network on both domains resulted in a mixed-domain validation accuracy of 96.14\%.
 
@@ -189,7 +212,7 @@ Agriculture serves as the foundation of the global economy. It supplies food, ra
 
 Finding and identifying plant diseases early is essential to stop these losses. Historically, farmers look at leaf symptoms to figure out the disease. Relying on visual checks is subjective, takes a lot of time, and frequently leads to incorrect conclusions. Getting expert advice from plant pathologists is also difficult in isolated farming regions. Incorrect diagnoses usually result in the wrong application of chemical pesticides. This mistake raises farming costs, harms the soil, and pollutes the environment.
 
-Applying Computer Vision and Deep Learning techniques provides a practical way to automate disease detection. Convolutional Neural Networks display excellent results in classifying images. Still, researchers mostly build these models using images taken in controlled labs. When these models run in real agricultural fields, their accuracy drops significantly. The ``AgriVision 2.0'' project tackles this domain gap. It introduces a lightweight CNN named ``AgriNet,'' applies domain adaptation methods, incorporates explainable AI, and uses a Retrieval-Augmented Generation system to give accurate farming advice.
+Applying Computer Vision and Deep Learning techniques provides a practical way to automate disease detection. Convolutional Neural Networks display excellent results in classifying images. Still, researchers mostly build these models using images taken in Controlled labs. When these models run in real agricultural fields, their accuracy drops significantly. The proposed project tackles this domain gap. It introduces a lightweight CNN named ``AgriNet,'' applies domain adaptation methods, incorporates explainable AI, and uses a Retrieval-Augmented Generation system to give accurate farming advice.
 
 \section{Literature Survey}
 To establish the research context, a thorough survey of literature spanning traditional machine learning, deep learning architectures, domain adaptation, and retrieval systems in agriculture was performed.
@@ -213,7 +236,7 @@ Retrieval-Augmented Generation (RAG), proposed by Lewis et al. \cite{rag}, resol
 The primary motivation for this project is to address the limitations of existing agricultural classification systems. Standard academic projects often rely on fine-tuning pre-trained networks using transfer learning. While effective, this approach does not demonstrate custom architectural design. Farmers are also hesitant to trust AI predictions without understanding the reasoning behind them. The black-box nature of deep neural networks necessitates explainable AI tools like Grad-CAM \cite{gradcam} to visualize the decision-making process. Finally, there is a clear need for a unified platform that not only detects the disease but also offers verified, non-hallucinated treatment guidelines directly sourced from reliable agricultural publications.
 
 \section{Objectives of the Present Work}
-The objectives defined for the design and deployment of the AgriVision 2.0 system are:
+The objectives defined for the design and deployment of the proposed system are:
 \begin{enumerate}
     \item To design and implement a custom, lightweight CNN architecture (AgriNet) from scratch in PyTorch.
     \item To implement a Mixed-Domain Training pipeline combining laboratory and real-world field datasets to overcome the lab-to-field domain gap.
@@ -346,7 +369,7 @@ By combining a lightweight CNN classifier with a localized RAG engine, the propo
 \chapter{SYSTEM DESIGN AND IMPLEMENTATION}
 
 \section{General}
-This section maps out the technical design of the AgriVision 2.0 application. It includes Data Flow Diagrams, the overall system architecture, the database schema, and the necessary hardware specifications.
+This section maps out the technical design of the proposed application. It includes Data Flow Diagrams, the overall system architecture, the database schema, and the necessary hardware specifications.
 
 \section{Data Flow Diagrams (DFDs)}
 Data Flow Diagrams show exactly how information moves through the application.
@@ -436,6 +459,16 @@ Standard mathematical formulas were used to evaluate classification performance.
     \label{fig:confusion_matrix}
 \end{figure}
 
+\section{Zero-Shot Field Testing}
+To validate the real-world robustness of the proposed system, zero-shot field testing was conducted on entirely unseen images from local farms. Despite the presence of complex backgrounds and varying illumination, the model correctly identified the diseases, demonstrating strong generalization beyond the training distribution.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{media/zeroshot_field_test.png}
+    \caption{Zero-Shot Field Test Prediction on Unseen Data}
+    \label{fig:zeroshot_field_test}
+\end{figure}
+
 \section{Explainable AI (XAI) via Grad-CAM Visualizations}
 Gradient-weighted Class Activation Mapping (Grad-CAM) was added to ensure the predictions are transparent. Grad-CAM looks at the gradients of the target class score relative to the feature map activations in the final convolutional layer. It globally pools these gradients to figure out the importance of each feature map. Applying a ReLU activation isolates the specific features that push the model toward the target class:
 \begin{equation}
@@ -452,7 +485,7 @@ When this resulting heatmap is laid over the original image, it shows the model 
 
 \section{Conclusion and Future Work}
 \subsection{Summary of Findings}
-The AgriVision 2.0 application proves that a custom, lightweight CNN can deliver high accuracy while using minimal computational resources. The mixed-domain training approach successfully lowered the model's sensitivity to background noise, resulting in a 96.14\% accuracy rate on field images. By adding a local RAG engine, the platform guarantees that farmers receive accurate treatment advice pulled straight from official crop manuals.
+The proposed application proves that a custom, lightweight CNN can deliver high accuracy while using minimal computational resources. The mixed-domain training approach successfully lowered the model's sensitivity to background noise, resulting in a 96.14\% accuracy rate on field images. By adding a local RAG engine, the platform guarantees that farmers receive accurate treatment advice pulled straight from official crop manuals.
 
 \subsection{Future Scope}
 Several areas remain open for future development. Converting the AgriNet weights into ONNX or TensorFlow Lite formats would allow the model to run offline on mobile phones. The network architecture could be modified to support dual-task learning, adding a regression head to calculate the percentage of leaf area affected by the disease. Interfacing the backend with drone imagery would enable large-scale farm monitoring. Finally, translating the user interface and the RAG outputs into local regional languages would greatly improve accessibility for rural farming communities.
